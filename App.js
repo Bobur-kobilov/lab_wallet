@@ -6,13 +6,17 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import Home from './components/Home'
 import MaininNavigation from './navigation/mainNavigation';
+import TabNavigation from './navigation/tabNavigation';
 const App: () => React$Node = () => {
   return (
-    <MaininNavigation />
+    <Fragment>
+      <MaininNavigation />
+      {/* <TabNavigation /> */}
+    </Fragment>
     // <Home />
   );
 };
