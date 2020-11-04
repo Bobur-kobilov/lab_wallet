@@ -22,7 +22,7 @@ const ListAccessoriesShowcase = () => {
     <ListItem
       title={`${item.title} ${index + 1}`}
       description={`${item.description} ${index + 1}`}
-      // accessoryLeft={renderItemIcon}
+      // accessoryLeft={ <Icon {...props} name='person'/>} ` ` `
       accessoryRight={renderItemAccessory}
     />
   );
@@ -46,8 +46,11 @@ export default class Manage extends Component {
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
             <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ListAccessoriesShowcase />
-            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Login')}>
+            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Manage')}>
                 Scan QR Code
+            </Button>
+            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('DataForm')}>
+                Enter Manually
             </Button>
             </Layout>
         </ApplicationProvider>

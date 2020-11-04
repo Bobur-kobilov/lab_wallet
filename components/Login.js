@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { ApplicationProvider, Layout, Text, Button, Input ,TopNavigation, Divider} from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
 import * as eva from '@eva-design/eva';

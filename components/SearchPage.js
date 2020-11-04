@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Text, Button, Input } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; //
+import { ModalWithBackdropShowcase } from './common/modal';
 import {
   StyleSheet,
   View
@@ -23,9 +24,10 @@ export default class Search extends Component {
                 placeholder='Search'
               />
             </View>
-            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Search')}>
+            {/* <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Search')}>
               Search
-          </Button>
+          </Button> */}
+            <ModalWithBackdropShowcase />
 
           </Layout>
         </ApplicationProvider>
