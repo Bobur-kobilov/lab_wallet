@@ -1,44 +1,53 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Button, Input } from '@ui-kitten/components';
+import { ApplicationProvider, Layout, Button, Input, Datepicker } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
+
+const screenWidth = Math.round(Dimensions.get('window').width);
 export default class Home extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      date: new Date
+    }
 
+  }
+  setNewData(date) {
+    this.setState({
+      date: date
+    })
   }
   render() {
     return (
-    <Fragment>
+      <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-            <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.controlContainer}>
-            <Input
+              <Input
                 style={styles.inputbtn}
-                size='Medium'
+                size='medium'
                 placeholder='Product Name'
               />
               <Input
                 style={styles.inputbtn}
                 placeholder='Description'
-                size='Medium'
+                size='medium'
               />
               <Input
                 style={styles.inputbtn}
                 placeholder='Code'
-                size='Medium'
+                size='medium'
               />
-              <Input
-                style={styles.inputbtn}
-                placeholder='Manufactured Date'
-                size='Medium'
+              <Datepicker
+                date={this.state.date}
+                onSelect={nextDate => this.setNewData(nextDate)}
               />
             </View>
-              <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Login')}>
-                Save
+            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Login')}>
+              Save
             </Button>
-            </Layout>
+          </Layout>
         </ApplicationProvider>
       </Fragment>
     );
@@ -59,12 +68,12 @@ const styles = StyleSheet.create({
     margin: 2,
     padding: 6,
     justifyContent: 'center',
-    width: 400
+    width: screenWidth/1.1
   },
   text: {
     justifyContent: 'flex-start',
     color: theme["color-warning-600"]
-    
+
   },
   inputbtn: {
     marginVertical: 2,

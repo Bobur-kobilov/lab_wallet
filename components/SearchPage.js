@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react';
+import { Dimensions } from 'react-native';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Text, Button, Input } from '@ui-kitten/components';
+import { ApplicationProvider, Layout, Input } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; //
 import { ModalWithBackdropShowcase } from './common/modal';
 import {
   StyleSheet,
   View
 } from 'react-native';
+
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 export default class Search extends Component {
   constructor(props) {
@@ -20,13 +23,10 @@ export default class Search extends Component {
             <View style={styles.controlContainer}>
               <Input
                 style={styles.inputbtn}
-                size='Medium'
+                size='medium'
                 placeholder='Search'
               />
             </View>
-            {/* <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Search')}>
-              Search
-          </Button> */}
             <ModalWithBackdropShowcase />
 
           </Layout>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     margin: 2,
     padding: 6,
     justifyContent: 'center',
-    width: 400
+    width: screenWidth / 1.1
   },
   inputbtn: {
     marginVertical: 2,

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { ApplicationProvider, Layout, Text, Button, Input ,TopNavigation, Divider} from '@ui-kitten/components';
+import { StyleSheet, View, Dimensions } from 'react-native';
+import { ApplicationProvider, Layout, Button, Input} from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
 import * as eva from '@eva-design/eva';
 
 
-
+const screenWidth = Math.round(Dimensions.get('window').width);
 export default class Login extends Component {
   constructor(props) {
     super(props)
@@ -18,13 +18,13 @@ export default class Login extends Component {
             <View style={styles.controlContainer}>
               <Input
                 style={styles.inputbtn}
-                size='Medium'
+                size='medium'
                 placeholder='Email'
               />
               <Input
                 style={styles.inputbtn}
                 placeholder='Password'
-                size='Medium'
+                size='medium'
               />
             </View>
             <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('SignUp')}>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     margin: 2,
     padding: 6,
     justifyContent: 'center',
-    width: 400
+    width: screenWidth/1.1
   },
   inputbtn: {
     marginVertical: 2,
