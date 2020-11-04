@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Input } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; //
-import { ModalWithBackdropShowcase } from './common/modal';
+import Popup from './common/modal';
 import {
   StyleSheet,
   View
@@ -27,7 +27,7 @@ export default class Search extends Component {
                 placeholder='Search'
               />
             </View>
-            <ModalWithBackdropShowcase />
+            <Popup />
 
           </Layout>
         </ApplicationProvider>
