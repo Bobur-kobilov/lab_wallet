@@ -3,22 +3,37 @@ import { StyleSheet, View, Dimensions } from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Button, Input, Datepicker } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
+import client from '../utils/httpClient';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: new Date
-    }
-
+      date: new Date,
+      productName: "",
+      description: "",
+      code: "",
+    };
   }
-  setNewData(date) {
+  setNewDate(date) {
     this.setState({
       date: date
     })
+  };
+  async saveData() {
+    const { productName, description, code, producedAt,date } = this.state;
+    const data = {
+      name: productName,
+      description: description,
+      code: code,
+      producedAt: date
+    };
+    const response = await client.post('/data', data);
+    console.log(response.data)
   }
   render() {
+    const { productName, description, code, producedAt } = this.state;
     return (
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
@@ -28,23 +43,29 @@ export default class Home extends Component {
                 style={styles.inputbtn}
                 size='medium'
                 placeholder='Product Name'
+                value={productName}
+                onChangeText={(productName) => this.setState({productName})}
               />
               <Input
                 style={styles.inputbtn}
                 placeholder='Description'
                 size='medium'
+                value={description}
+                onChangeText={(description) => this.setState({description})}
               />
               <Input
                 style={styles.inputbtn}
                 placeholder='Code'
                 size='medium'
+                value={code}
+                onChangeText={(code) => this.setState({code})}
               />
               <Datepicker
                 date={this.state.date}
-                onSelect={nextDate => this.setNewData(nextDate)}
+                onSelect={nextDate => this.setNewDate(nextDate)}
               />
             </View>
-            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Login')}>
+            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.saveData()}>
               Save
             </Button>
           </Layout>

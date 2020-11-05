@@ -15,12 +15,13 @@ export default class SignUp extends Component {
       confirmPswd: "",
       firstName: "",
       lastName: "",
-      orgName: ""
+      orgName: "",
+      pswdError: ""
     }
   }
   async signUp() {
     try {
-      const { email, password,confirmPswd, firstName, lastName, orgName } = this.state; 
+      const { email, password,confirmPswd,firstName, lastName, orgName } = this.state; 
       const data = {
         "email": email,
         "pswd": password,
@@ -28,6 +29,10 @@ export default class SignUp extends Component {
         "lastName": lastName,
         "orgName": orgName
     }   
+      if (password != confirmPswd) {
+        this.setState({pswdError: "Passwords do not match"})
+        return;
+      }
       const response = await client.post('/signup',data)
       console.log(response.data)
     } catch (e) {
@@ -38,7 +43,7 @@ export default class SignUp extends Component {
     this.setState({secureTextEntry: !this.state.secureTextEntry})
   };
   render() {
-    const { email, password, confirmPswd,firstName, lastName, orgName } = this.state;
+    const { email, password, confirmPswd,pswdError,firstName, lastName, orgName } = this.state;
     return (
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
@@ -58,14 +63,15 @@ export default class SignUp extends Component {
                 value={password}
                 secureTextEntry={true}
                 onChangeText={(password) => this.setState({password})}
-              />
+                />
               <Input
                 style={styles.inputbtn}
                 placeholder='Confirm Password'
                 size='medium'
                 value={confirmPswd}
+                caption={pswdError}
                 secureTextEntry={true}
-                onChangeText={(confirmPswd) => this.setState({confirmPswd})}
+                onChangeText={(confirmPswd) => this.setState({confirmPswd, pswdError: ''})}
               />
               <Input
                 style={styles.inputbtn}
