@@ -20,15 +20,7 @@ export default class Search extends Component {
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
           <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <View style={styles.controlContainer}>
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='Search'
-              />
-            </View>
             <Popup />
-
           </Layout>
         </ApplicationProvider>
       </Fragment>

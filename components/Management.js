@@ -18,7 +18,7 @@ export default class Manage extends Component {
   }
   async getData() {
     try {
-       const response = await client.get('data');
+       const response = await client.get('/data/all');
        this.setState({data:response.data})
        console.log(response.data);
     } catch (e) {
@@ -32,7 +32,7 @@ export default class Manage extends Component {
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
             <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <DataList data={this.state.data} />
-              <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('Manage')}>
+              <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('QRCode')}>
                   Scan QR Code
               </Button>
               <Button style={styles.button} appearance='outline' status='success' onPress={() => this.props.navigation.navigate('DataForm')}>

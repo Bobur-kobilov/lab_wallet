@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Button, Input, Datepicker } from '@ui-kitten/components';
-import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
+import { default as theme } from '../theme/custom-theme.json';
 import client from '../utils/httpClient';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
@@ -22,7 +22,7 @@ export default class Home extends Component {
     })
   };
   async saveData() {
-    const { productName, description, code, producedAt,date } = this.state;
+    const { productName, description, code,date } = this.state;
     const data = {
       name: productName,
       description: description,
@@ -33,7 +33,7 @@ export default class Home extends Component {
     console.log(response.data)
   }
   render() {
-    const { productName, description, code, producedAt } = this.state;
+    const { productName, description, code } = this.state;
     return (
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>

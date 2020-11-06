@@ -43,6 +43,7 @@ export default class Login extends Component {
                 placeholder='Password'
                 size='medium'
                 value={password}
+                secureTextEntry={true}
                 onChangeText={(password) => this.setState({password})}
               />
             </View>

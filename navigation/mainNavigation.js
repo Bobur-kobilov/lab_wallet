@@ -5,6 +5,8 @@ import SignUp from '../components/SignUp';
 import Login from '../components/Login';
 import DataForm from '../components/DataForm';
 import TabNavigation from './tabNavigation';
+import QRCode from '../components/common/QRCode';
+
 const Stack = createStackNavigator();
 
 function MaininNavigation() {
@@ -32,6 +34,11 @@ function MaininNavigation() {
             headerTransparent: true
           }}
           component={DataForm} />
+           <Stack.Screen name="QRCode"
+          options={{
+            headerTransparent: true
+          }}
+          component={QRCode} />
       </Stack.Navigator>
 
     </NavigationContainer>
