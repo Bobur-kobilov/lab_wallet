@@ -11,7 +11,9 @@ export default class Popup extends Component {
       isVisible: false,
       data: [],
       code: ""
-    }
+    };
+    // this.getData = this.getData.bind(this);
+    // this.setVisible = this.setVisible.bind(this);
   }
   async getData() {
     try {
@@ -22,47 +24,48 @@ export default class Popup extends Component {
         data: response.data
       })
       console.log(this.state.data);
-      this.setVisible();
+      await this.setVisible();
     } catch (e) {
       console.error(e);
       return;
     }
   }
-  setVisible() {
-    this.setState({
+  async setVisible() {
+    await this.setState({
       isVisible: !this.state.isVisible
-    })
+    });
+    console.log(this.state.isVisible)
   }
   render() {
-    const { code, data } = this.state;
-    console.log(data)
+    const { code, data, isVisible } = this.state;
     return (
       <Fragment>
         <View style={styles.controlContainer}>
-          <Input
-            style={styles.inputbtn}
-            size='medium'
-            placeholder='Search'
-            value={code}
-            onChangeText={(code) => this.setState({code})}
-          />
+          <View style={styles.card}>
+            <Input
+              style={styles.inputbtn}
+              size='medium'
+              placeholder='Search'
+              value={code}
+              onChangeText={(code) => this.setState({ code })}
+            />
+          </View>
         </View>
         <View style={styles.container}>
           <Button onPress={() => this.getData()}>
             Search
-      </Button>
-
+          </Button>
           <Modal
-            visible={this.state.isVisible}
+            visible={isVisible}
             backdropStyle={styles.backdrop}
             onBackdropPress={() => this.setVisible()}>
             <Card disabled={true}>
-              {data.map((item) => {
-               return <Text style={styles.text}>{item.Name} {item.Description}</Text> 
+              {data.map((item, key) => {
+                return <Text style={styles.text} key={key}>{item.Name} {item.Description}</Text>
               })}
               <Button onPress={() => this.setVisible()}>
                 DISMISS
-          </Button>
+              </Button>
             </Card>
           </Modal>
 
@@ -74,6 +77,11 @@ export default class Popup extends Component {
 const styles = StyleSheet.create({
   container: {
     minHeight: 292,
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
   },
   backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -87,5 +95,12 @@ const styles = StyleSheet.create({
     padding: 6,
     justifyContent: 'center',
     width: screenWidth / 1.1
+  },
+  card: {
+    shadowOpacity: 0.75,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
   },
 });

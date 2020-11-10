@@ -39,35 +39,39 @@ export default class Home extends Component {
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
           <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.controlContainer}>
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='Product Name'
-                value={productName}
-                onChangeText={(productName) => this.setState({productName})}
-              />
-              <Input
-                style={styles.inputbtn}
-                placeholder='Description'
-                size='medium'
-                value={description}
-                onChangeText={(description) => this.setState({description})}
-              />
-              <Input
-                style={styles.inputbtn}
-                placeholder='Code'
-                size='medium'
-                value={code}
-                onChangeText={(code) => this.setState({code})}
-              />
-              <Datepicker
-                date={this.state.date}
-                onSelect={nextDate => this.setNewDate(nextDate)}
-              />
+              <View style={styles.card}>
+                <Input
+                  style={styles.inputbtn}
+                  size='medium'
+                  placeholder='Product Name'
+                  value={productName}
+                  onChangeText={(productName) => this.setState({productName})}
+                />
+                <Input
+                  style={styles.inputbtn}
+                  placeholder='Description'
+                  size='medium'
+                  value={description}
+                  onChangeText={(description) => this.setState({description})}
+                />
+                <Input
+                  style={styles.inputbtn}
+                  placeholder='Code'
+                  size='medium'
+                  value={code}
+                  onChangeText={(code) => this.setState({code})}
+                />
+                <Datepicker
+                  date={this.state.date}
+                  onSelect={nextDate => this.setNewDate(nextDate)}
+                />
+              </View>
             </View>
-            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.saveData()}>
-              Save
-            </Button>
+            <View style={styles.buttonContainer}>
+              <Button style={styles.button} onPress={() => this.saveData()}>
+                Save
+              </Button>
+            </View>
           </Layout>
         </ApplicationProvider>
       </Fragment>
@@ -99,4 +103,18 @@ const styles = StyleSheet.create({
   inputbtn: {
     marginVertical: 2,
   },
+  card: {
+    shadowOpacity: 0.75,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
+  },
+  buttonContainer: {
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
+  }
 });

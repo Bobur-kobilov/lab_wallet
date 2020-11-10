@@ -30,26 +30,30 @@ export default class Login extends Component {
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
           <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.controlContainer}>
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='Email'
-                value={email}
-                autoCapitalize="none"
-                onChangeText={(email) => this.setState({email})}
-              />
-              <Input
-                style={styles.inputbtn}
-                placeholder='Password'
-                size='medium'
-                value={password}
-                secureTextEntry={true}
-                onChangeText={(password) => this.setState({password})}
-              />
+              <View style={styles.card}>
+                <Input
+                  style={styles.inputbtn}
+                  size='medium'
+                  placeholder='Email'
+                  value={email}
+                  autoCapitalize="none"
+                  onChangeText={(email) => this.setState({email})}
+                />
+                <Input
+                  style={styles.inputbtn}
+                  placeholder='Password'
+                  size='medium'
+                  value={password}
+                  secureTextEntry={true}
+                  onChangeText={(password) => this.setState({password})}
+                />
+              </View>
             </View>
-            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.login()}>
-              Login
-            </Button>
+            <View style={styles.buttonContainer}>
+              <Button style={styles.button} onPress={() => this.login()}>
+                Login
+              </Button>
+            </View>
 
           </Layout>
         </ApplicationProvider>
@@ -77,4 +81,18 @@ const styles = StyleSheet.create({
   inputbtn: {
     marginVertical: 2,
   },
+  card: {
+    shadowOpacity: 0.75,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
+  },
+  buttonContainer: {
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
+  }
 });

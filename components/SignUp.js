@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, View, Dimensions, TouchableWithoutFeedback } from 'react-native';
-import { ApplicationProvider, Layout, Text, Button, Input, Icon, Divider } from '@ui-kitten/components';
+import { StyleSheet, View, Dimensions } from 'react-native';
+import { ApplicationProvider, Layout, Button, Input,Card } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
 import * as eva from '@eva-design/eva';
 import client from '../utils/httpClient';
@@ -48,56 +48,61 @@ export default class SignUp extends Component {
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
           <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <View style={styles.controlContainer}>
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='Email'
-                value={email}
-                onChangeText={(email) => this.setState({email})}
-              />
-              <Input
-                style={styles.inputbtn}
-                placeholder='Password'
-                size='medium'
-                value={password}
-                secureTextEntry={true}
-                onChangeText={(password) => this.setState({password})}
-                />
-              <Input
-                style={styles.inputbtn}
-                placeholder='Confirm Password'
-                size='medium'
-                value={confirmPswd}
-                caption={pswdError}
-                secureTextEntry={true}
-                onChangeText={(confirmPswd) => this.setState({confirmPswd, pswdError: ''})}
-              />
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='First Name'
-                value={firstName}
-                onChangeText={(firstName) => this.setState({firstName})}
-              />
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='Last Name'
-                value={lastName}
-                onChangeText={(lastName) => this.setState({lastName})}
-              />
-              <Input
-                style={styles.inputbtn}
-                size='medium'
-                placeholder='Organization'
-                value={orgName}
-                onChangeText={(orgName) => this.setState({orgName})}
-              />
-            </View>
-            <Button style={styles.button} appearance='outline' status='success' onPress={() => this.signUp()}>
-              Sign Up
-            </Button>
+              <View style={styles.controlContainer}>
+                  <View style={styles.card}>
+                    <Input
+                      style={styles.inputbtn}
+                      size='medium'
+                      placeholder='Email'
+                      value={email}
+                      autoCapitalize="none"
+                      onChangeText={(email) => this.setState({email})}
+                    />
+                    <Input
+                      style={styles.inputbtn}
+                      placeholder='Password'
+                      size='medium'
+                      value={password}
+                      secureTextEntry={true}
+                      onChangeText={(password) => this.setState({password})}
+                      />
+                    <Input
+                      style={styles.inputbtn}
+                      placeholder='Confirm Password'
+                      size='medium'
+                      value={confirmPswd}
+                      caption={pswdError}
+                      secureTextEntry={true}
+                      onChangeText={(confirmPswd) => this.setState({confirmPswd, pswdError: ''})}
+                    />
+                    <Input
+                      style={styles.inputbtn}
+                      size='medium'
+                      placeholder='First Name'
+                      value={firstName}
+                      onChangeText={(firstName) => this.setState({firstName})}
+                    />
+                    <Input
+                      style={styles.inputbtn}
+                      size='medium'
+                      placeholder='Last Name'
+                      value={lastName}
+                      onChangeText={(lastName) => this.setState({lastName})}
+                    />
+                    <Input
+                      style={styles.inputbtn}
+                      size='medium'
+                      placeholder='Organization'
+                      value={orgName}
+                      onChangeText={(orgName) => this.setState({orgName})}
+                    />
+                  </View>
+              </View>
+              <View style={styles.buttonContainer}>
+              <Button style={styles.button} onPress={() => this.signUp()}>
+                Sign Up
+              </Button>
+              </View>
 
           </Layout>
         </ApplicationProvider>
@@ -114,6 +119,7 @@ const styles = StyleSheet.create({
     margin: 3,
     width: 170,
     height: 50
+    
   },
   controlContainer: {
     borderRadius: 4,
@@ -125,4 +131,18 @@ const styles = StyleSheet.create({
   inputbtn: {
     marginVertical: 2,
   },
+  card: {
+    shadowOpacity: 0.75,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
+  },
+  buttonContainer: {
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
+  }
 });
