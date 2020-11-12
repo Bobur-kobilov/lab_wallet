@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Text, Button, Card, Divider } from '@ui-kitten/components';
+import { ApplicationProvider, Layout, Text, Button } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json';
 import { connect } from 'react-redux';
 
@@ -10,6 +10,7 @@ class Home extends Component {
     super(props)
   }
   render() {
+    console.log(this.props.user)
     return (
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
@@ -59,7 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    // width: 500
   },
   card: {
     justifyContent: 'center',
@@ -78,12 +78,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.2
   }
 });
-
-
 const mapStateToProps = (state) => {
-  const { user } = state
-  return { user }
+  const { user } = state;
+  return { user };
 };
-
-
 export default connect(mapStateToProps)(Home);

@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import { ApplicationProvider, Layout, Button, Input,Card } from '@ui-kitten/components';
+import { ApplicationProvider, Layout, Button, Input } from '@ui-kitten/components';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
 import * as eva from '@eva-design/eva';
 import client from '../utils/httpClient';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addUserData, removeUserData } from '../redux/actions/user';
 const screenWidth = Math.round(Dimensions.get('window').width);
-export default class SignUp extends Component {
+
+class SignUp extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,6 +38,12 @@ export default class SignUp extends Component {
       }
       const response = await client.post('/signup',data)
       console.log(response.data)
+      const userData = {
+        token: response.data
+      };
+      this.props.addUserData(userData);
+      this.props.removeUserData()
+      console.log(this.props.user);
     } catch (e) {
       console.error(e)
     }
@@ -146,3 +155,14 @@ const styles = StyleSheet.create({
     borderWidth: 0.2
   }
 });
+const mapStateToProps = (state) => {
+  const { user } = state;
+  return { user };
+};
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addUserData,
+    removeUserData
+  }, dispatch)
+);
+export default connect(mapStateToProps,mapDispatchToProps)(SignUp);
