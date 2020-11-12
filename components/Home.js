@@ -2,13 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Text, Button, Card, Divider } from '@ui-kitten/components';
-import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
-import background from '../images/background.jpg';
-import { color } from 'react-native-reanimated';
-export default class Home extends Component {
+import { default as theme } from '../theme/custom-theme.json';
+import { connect } from 'react-redux';
+
+class Home extends Component {
   constructor(props) {
     super(props)
-
   }
   render() {
     return (
@@ -48,7 +47,12 @@ const styles = StyleSheet.create({
   },
   text: {
     justifyContent: 'flex-start',
-    color: theme["color-warning-600"]
+    color: theme["color-warning-600"],
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
 
   },
   backgroundImage: {
@@ -74,3 +78,12 @@ const styles = StyleSheet.create({
     borderWidth: 0.2
   }
 });
+
+
+const mapStateToProps = (state) => {
+  const { user } = state
+  return { user }
+};
+
+
+export default connect(mapStateToProps)(Home);

@@ -15,7 +15,7 @@ export default class DataList extends Component {
       Description: 'Bisphenol A, MMA, MIBK, IPA, solvents, pharmaceuticals / agrochemicals',
     });
     const renderItemAccessory = (props) => (
-      <Button size='tiny'>More</Button>
+      <Button style={styles.buttonContainer} size='tiny'>More</Button>
     );
     const renderItem = ({ item, index }) => (
       <ListItem
@@ -27,7 +27,6 @@ export default class DataList extends Component {
     return (
       <List
         style={styles.container}
-        // data={this.props.data  === [] ? data : this.props.data }
         data={this.props.data}
         renderItem={renderItem}
       />
@@ -37,7 +36,7 @@ export default class DataList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    maxHeight: 392,
+    maxHeight: 492,
     width: 350,
     margin: 10
   },
@@ -57,5 +56,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     color: theme["color-warning-600"]
 
+  },
+  buttonContainer: {
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    borderWidth: 0.2
   }
 });
