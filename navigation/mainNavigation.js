@@ -13,34 +13,43 @@ function MaininNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home"
+        <Stack.Screen
+          name="Home"
           options={{
             headerTransparent: true,
-            headerShown: false
+            headerShown: false,
           }}
-          component={TabNavigation} />
-        <Stack.Screen name="SignUp"
+          component={TabNavigation}
+        />
+        <Stack.Screen
+          name="SignUp"
           options={{
             headerTransparent: true,
           }}
-          component={SignUp} />
-        <Stack.Screen name="Login"
+          component={SignUp}
+        />
+        <Stack.Screen
+          name="Login"
           options={{
-            headerTransparent: true
+            headerTransparent: true,
           }}
-          component={Login} />
-          <Stack.Screen name="DataForm"
+          component={Login}
+        />
+        <Stack.Screen
+          name="DataForm"
           options={{
-            headerTransparent: true
+            headerTransparent: true,
           }}
-          component={DataForm} />
-           <Stack.Screen name="QRCode"
+          component={DataForm}
+        />
+        <Stack.Screen
+          name="QRCode"
           options={{
-            headerTransparent: true
+            headerTransparent: true,
           }}
-          component={QRCode} />
+          component={QRCode}
+        />
       </Stack.Navigator>
-
     </NavigationContainer>
   );
 }

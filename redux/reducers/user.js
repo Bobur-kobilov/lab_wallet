@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { user } from '../types/user';
 const INITIAL_STATE = {
- userData: []
+  userData: [],
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -14,13 +14,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
       const newState = { userData };
       return newState;
     case user.REMOVE_USER_DATA:
-      userData.pop()
+      userData.pop();
       return state;
     default:
-      return state
+      return state;
   }
 };
 
 export default combineReducers({
-  user: userReducer
+  user: userReducer,
 });

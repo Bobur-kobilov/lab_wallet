@@ -9,15 +9,13 @@ import Home from '../components/Home';
 import Safety from '../components/Safety';
 const Tab = createBottomTabNavigator();
 
-
 export default function TabNavigation() {
   return (
-      <Tab.Navigator>
-        <Tab.Screen name="Home" 
-        component={Home} />
-        <Tab.Screen name="Search" component={Search} />
-        <Tab.Screen name="Manage" component={Manage} />
-        <Tab.Screen name="Safety" component={Safety} />
-      </Tab.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Manage" component={Manage} />
+      <Tab.Screen name="Safety" component={Safety} />
+    </Tab.Navigator>
   );
 }

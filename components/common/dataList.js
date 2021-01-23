@@ -9,13 +9,16 @@ export default class DataList extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.data)
+    console.log(this.props.data);
     const data = new Array(8).fill({
       Name: 'Acetone',
-      Description: 'Bisphenol A, MMA, MIBK, IPA, solvents, pharmaceuticals / agrochemicals',
+      Description:
+        'Bisphenol A, MMA, MIBK, IPA, solvents, pharmaceuticals / agrochemicals',
     });
     const renderItemAccessory = (props) => (
-      <Button style={styles.buttonContainer} size='tiny'>More</Button>
+      <Button style={styles.buttonContainer} size="tiny">
+        More
+      </Button>
     );
     const renderItem = ({ item, index }) => (
       <ListItem
@@ -30,7 +33,7 @@ export default class DataList extends Component {
         data={this.props.data}
         renderItem={renderItem}
       />
-    )
+    );
   }
 }
 
@@ -38,12 +41,12 @@ const styles = StyleSheet.create({
   container: {
     maxHeight: 492,
     width: 350,
-    margin: 10
+    margin: 10,
   },
   button: {
     margin: 10,
     width: 170,
-    height: 50
+    height: 50,
   },
   controlContainer: {
     borderRadius: 4,
@@ -54,14 +57,13 @@ const styles = StyleSheet.create({
   },
   text: {
     justifyContent: 'flex-start',
-    color: theme["color-warning-600"]
-
+    color: theme['color-warning-600'],
   },
   buttonContainer: {
     shadowOpacity: 1,
     shadowRadius: 10,
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
-    borderWidth: 0.2
-  }
+    borderWidth: 0.2,
+  },
 });

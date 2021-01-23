@@ -1,0 +1,27 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    // "eslint.enable": true,  // deprecated
+    "files.exclude": {
+        // project specific
+        "**/.eslintignore": true,
+        "**/.eslintrc": true,
+        "**/.gitignore": true,
+        "**/.prettierignore": true,
+        "**/.prettierrc.js": true,
+        "**/dist": false,
+        "**/public": true,
+        "**/install.sh": true,
+        "**/yarn.lock": true,
+        "**/yarn-error.log": true,
+        "**/jest.config.js": true,
+        "**/.buckconfig": true,
+        "**/.eslint.js": true,
+        "**/.flowconfig": true,
+        "**/babel.config.js": true,
+        "**/.watchmanconfig": true,
+        "**/metro.config.js": true,
+        "**/node-modules": true,
+    }
+}

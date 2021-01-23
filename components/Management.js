@@ -1,5 +1,5 @@
-import React, {Component, Fragment} from 'react';
-import {Layout, Button,ApplicationProvider } from '@ui-kitten/components';
+import React, { Component, Fragment } from 'react';
+import { Layout, Button, ApplicationProvider } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import * as eva from '@eva-design/eva';
 import { default as theme } from '../theme/custom-theme.json'; // <-- Import app theme
@@ -10,7 +10,7 @@ export default class Manage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
     this.getData = this.getData.bind(this);
   }
@@ -19,39 +19,51 @@ export default class Manage extends Component {
   }
   async getData() {
     try {
-       const response = await client.get('/data/all');
-       this.setState({data:response.data})
-       console.log(response.data);
+      const response = await client.get('/data/all');
+      this.setState({ data: response.data });
+      console.log(response.data);
     } catch (e) {
       console.error(e);
       return;
-    };
-  };
+    }
+  }
   render() {
     return (
-    <Fragment>
+      <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-            <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Layout
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <View style={styles.card}>
               <DataList data={this.state.data} />
             </View>
-              <Button style={styles.button} onPress={() => this.props.navigation.navigate('QRCode')}>
-                  Scan QR Code
-              </Button>
-              <Button style={styles.button} onPress={() => this.props.navigation.navigate('DataForm')}>
-                  Enter Manually
-              </Button>
-            </Layout>
+            <Button
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('QRCode')}
+            >
+              Scan QR Code
+            </Button>
+            <Button
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('DataForm')}
+            >
+              Enter Manually
+            </Button>
+          </Layout>
         </ApplicationProvider>
       </Fragment>
     );
-  };
-};
+  }
+}
 const styles = StyleSheet.create({
   container: {
     maxHeight: 392,
     width: 350,
-    margin: 10
+    margin: 10,
   },
   button: {
     margin: 10,
@@ -61,7 +73,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
-    borderWidth: 0.2
+    borderWidth: 0.2,
   },
   controlContainer: {
     borderRadius: 4,
@@ -72,13 +84,13 @@ const styles = StyleSheet.create({
   },
   text: {
     justifyContent: 'flex-start',
-    color: theme["color-warning-600"]
+    color: theme['color-warning-600'],
   },
   card: {
     shadowOpacity: 0.75,
     shadowRadius: 10,
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
-    borderWidth: 0.2
+    borderWidth: 0.2,
   },
 });

@@ -1,0 +1,6 @@
+node_modules
+__test__
+android
+ios
+.buckconfig
+package-lock.json

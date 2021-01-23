@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Linking
+  Linking,
 } from 'react-native';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
@@ -18,8 +18,8 @@ import { default as theme } from '../../theme/custom-theme.json'; // <-- Import 
 import client from '../../utils/httpClient';
 
 export default class ScanScreen extends Component {
-  onSuccess = e => {
-    Linking.openURL(e.data).catch(err =>
+  onSuccess = (e) => {
+    Linking.openURL(e.data).catch((err) =>
       console.error('An error occured', err)
     );
   };
@@ -28,7 +28,13 @@ export default class ScanScreen extends Component {
     return (
       <Fragment>
         <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-          <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Layout
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <QRCodeScanner
               onRead={this.onSuccess}
               flashMode={RNCamera.Constants.FlashMode.torch}
@@ -57,17 +63,17 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 18,
     padding: 32,
-    color: '#777'
+    color: '#777',
   },
   textBold: {
     fontWeight: '500',
-    color: '#000'
+    color: '#000',
   },
   buttonText: {
     fontSize: 21,
-    color: 'rgb(0,122,255)'
+    color: 'rgb(0,122,255)',
   },
   buttonTouchable: {
-    padding: 16
-  }
+    padding: 16,
+  },
 });
