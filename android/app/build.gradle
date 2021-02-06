@@ -134,7 +134,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        missingDimensionStrategy 'react-native-camera', 'general' <-- insert this line
+        missingDimensionStrategy 'react-native-camera', 'general'
+        missingDimensionStrategy "react-native-camera", "general"
+        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
     }
     splits {
         abi {
@@ -181,7 +183,14 @@ android {
     }
 }
 
+    
 dependencies {
+  implementation 'com.android.support:multidex:1.0.3' //enter the latest version
+android {
+    defaultConfig {
+        multiDexEnabled true
+    }
+}
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
